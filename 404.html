@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Redirecting...</title>
+    <script type="text/javascript">
+      // 1. 设置你新组织的基础域名 (不要以斜杠 / 结尾)
+      var newBaseUrl = "https://eyeline-labs.github.io";
+      
+      // 2. 捕获用户当前访问的完整路径、查询参数和锚点
+      // 例如用户访问 /repo_id/docs.html?v=1#setup
+      var currentPath = window.location.pathname; // 结果: /repo_id/docs.html
+      var currentQuery = window.location.search;  // 结果: ?v=1
+      var currentHash = window.location.hash;     // 结果: #setup
+      
+      // 3. 拼接成全新的目标 URL
+      var newUrl = newBaseUrl + currentPath + currentQuery + currentHash;
+      
+      // 4. 执行跳转 (使用 replace 不会在浏览器历史记录中留下 404 页面的记录)
+      window.location.replace(newUrl);
+    </script>
+    <style>
+      body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; text-align: center; padding: 50px; }
+      a { color: #0969da; text-decoration: none; }
+    </style>
+  </head>
+  <body>
+    <h1>The page has moved</h1>
+    <p>Redirecting to the new repository location...</p>
+    <p>If you are not redirected automatically, please <a id="manual-link" href="#">click here</a>.</p>
+    
+    <script>
+      // 为防止自动跳转失败，将拼接好的链接赋给手动点击的 a 标签
+      document.getElementById('manual-link').href = newUrl;
+    </script>
+  </body>
+</html>
